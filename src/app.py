@@ -35,7 +35,7 @@ def handle_hello():
     all_members = jackson_family.get_all_members()
     return jsonify(all_members), 200
 
-@app.route('/members', method=['POST'])
+@app.route('/members', methods=['POST'])
 def add_member():
     body = request.get_json()
     new_member = jackson_family.add_member(body)
@@ -46,7 +46,7 @@ def get_single_member(id):
     member = jackson_family.get_member(id)
     if member is None:
         return jsonify({"error": "Member not found"}), 404
-    return jsonify(member), 
+    return jsonify(member), 200
 
 @app.route('/members/<int:id>', methods=['DELETE'])
 def delete_member(id):
